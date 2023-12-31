@@ -1,0 +1,14 @@
+inputSet:
+  name: Build_pushkarbhadang12_GoPipelineRepository_1704021732959-pr-trigger-input-set
+  identifier: Build_pushkarbhadang12_GoPipelineRepository_1704021732959prtriggerinputset
+  orgIdentifier: default
+  projectIdentifier: TestPipeline
+  pipeline:
+    identifier: Build_pushkarbhadang12_GoPipelineRepository_1704021732959
+    properties:
+      ci:
+        codebase:
+          build:
+            type: PR
+            spec:
+              number: <+trigger.prNumber>

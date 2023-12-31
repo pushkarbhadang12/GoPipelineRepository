@@ -19,10 +19,21 @@ pipeline:
             steps:
               - step:
                   identifier: echo
-                  name: echo
+                  name: run unit tests
                   spec:
+                    connectorRef: account.harnessImage
+                    image: golang:1.15
                     shell: Sh
-                    command: echo hello world
+                    command: |-
+                      set +e
+                      go get gotest.tools/gotestsum
+                      gotestsum --format*standard-verbose --junitfile unit-tests.xml
+                      exit 0
+                    reports:
+                      type: JUnit
+                      spec:
+                        paths:
+                          - "*.xml"
                   timeout: ""
                   type: Run
           platform:
